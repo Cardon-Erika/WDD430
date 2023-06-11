@@ -13,7 +13,8 @@
                 <div class="col-xs-12 margin-top">
                     <cms-contact-item
                         *ngFor="let contactEl of contacts"
-                        [contact]="contactEl"></cms-contact-item>
+                        [contact]="contactEl"
+                        dnd-draggable [dragEnabled]="true" [dragData]="contactEl" [dropZones]="['contactGroup']"></cms-contact-item>
                 </div>
             </div>
         </div>

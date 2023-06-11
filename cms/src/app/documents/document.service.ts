@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { MaxValidator } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Document } from './document.model';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
@@ -67,6 +66,7 @@ export class DocumentService {
       return
     }
 
+    console.log(newDocument);
     this.maxDocumentId++
     newDocument.id = this.maxDocumentId.toString();
     this.documents.push(newDocument);
@@ -75,6 +75,7 @@ export class DocumentService {
   }
 
   updateDocument(originalDocument: Document, newDocument: Document) {
+    console.log("Update Document");
     if (!originalDocument || originalDocument == null || !newDocument || newDocument == null) {
       return
     }
