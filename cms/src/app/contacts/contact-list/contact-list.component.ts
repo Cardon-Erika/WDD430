@@ -9,6 +9,7 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./contact-list.component.css']
 })
 export class ContactListComponent implements OnInit {
+  term: string;
 
   contacts: Contact[] = []
   private subscription: Subscription;
@@ -33,6 +34,11 @@ export class ContactListComponent implements OnInit {
           this.contacts = contactList;
         }
       )
+  }
+
+  search(value: string) {
+    // console.log(value);
+    this.term = value;
   }
 
   ngOnDestroy() {

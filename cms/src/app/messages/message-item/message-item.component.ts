@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { Contact } from 'src/app/contacts/contact.model';
 import { ContactService } from 'src/app/contacts/contact.service';
 import { Message } from '../message.model';
@@ -12,10 +13,12 @@ export class MessageItemComponent implements OnInit {
   @Input() message: Message;
   messageSender: string;
 
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    const contact: Contact = this.contactService.getContact(this.message.sender);
+  ngOnInit() {
+    this.route.data.subscribe();
+    const contact: Contact = this.contactService.getContact(this.message.sender.toString());
+    // console.log(this.message.sender);
     this.messageSender = contact.name;
   }
 
