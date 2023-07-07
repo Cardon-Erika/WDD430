@@ -18,8 +18,8 @@ export class ContactListComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    this.contacts = this.contactService.getContacts();
+  ngOnInit() {
+    // this.contacts = this.contactService.getContacts();
 
     // this.contactService.contactChangedEvent
     //   .subscribe(
@@ -31,9 +31,12 @@ export class ContactListComponent implements OnInit {
     this.subscription = this.contactService.contactListChangedEvent
       .subscribe(
         (contactList: Contact[]) => {
+          console.log(contactList);
+          console.log('Fetching from ContactList');
           this.contacts = contactList;
         }
-      )
+      );
+      this.contactService.getContacts();
   }
 
   search(value: string) {

@@ -24,9 +24,12 @@ export class DocumentDetailComponent implements OnInit {
         (params: Params) => {
           // console.log(params);
           this.id = params['id'];
-          this.document = this.documentService.getDocument(this.id)
+          this.documentService.getDocument(this.id)
+          .subscribe(documentData => {
+            this.document = documentData.document;
+          });
         }
-      )
+      );
   }
 
   onDelete() {

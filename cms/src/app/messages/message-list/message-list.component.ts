@@ -17,7 +17,7 @@ export class MessageListComponent implements OnInit {
   constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
-    this.messages = this.messageService.getMessages();
+    // this.messages = this.messageService.getMessages();
     // this.messageService.messageChangedEvent
     //   .subscribe(
     //     (messages: Message[]) => {
@@ -27,9 +27,13 @@ export class MessageListComponent implements OnInit {
     this.subscription = this.messageService.messageChangedEvent
       .subscribe(
         (messageList: Message[]) => {
+          console.log("Message List: " + messageList);
+          console.log("Fetching from MessageList");
           this.messages = messageList;
         }
-      )
+      );
+      this.messageService.getMessages();
+      console.log('Getting Messages from MessageList');
   }
 
   // onAddMessage(message: Message){

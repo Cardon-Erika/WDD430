@@ -13,13 +13,19 @@ export class MessageItemComponent implements OnInit {
   @Input() message: Message;
   messageSender: string;
 
-  constructor(private contactService: ContactService, private route: ActivatedRoute) {}
+  constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.route.data.subscribe();
-    const contact: Contact = this.contactService.getContact(this.message.sender.toString());
-    // console.log(this.message.sender);
-    this.messageSender = contact.name;
+    // this.route.data.subscribe();
+
+
+    this.contactService.getContact(this.message.sender.id)
+      .subscribe(
+        contactData => {
+          this.messageSender = contactData.contact.name;
+          console.log(this.messageSender);
+        }
+      ); // comment back in - commented out for testing... 6/30
   }
 
 }

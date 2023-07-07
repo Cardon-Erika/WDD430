@@ -20,9 +20,13 @@ export class ContactDetailComponent implements OnInit {
         (params: Params) => {
           // console.log(params);
           this.id = params['id'];
-          this.contact = this.contactService.getContact(this.id)
+          this.contactService.getContact(this.id)
+          .subscribe(contactData => {
+            this.contact = contactData.contact;
+            // console.log(this.contact);
+          });
         }
-      )
+      );
   }
 
   onDelete() {

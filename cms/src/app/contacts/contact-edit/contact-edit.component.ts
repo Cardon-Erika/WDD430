@@ -28,17 +28,22 @@ export class ContactEditComponent implements OnInit {
           return;
         }
 
-        this.originalContact = this.conatctService.getContact(this.id.toString());
-        if (this.originalContact == null || !this.originalContact) {
-          return;
-        }
-
-        this.editMode = true;
-        this.contact = JSON.parse(JSON.stringify(this.originalContact));
-
-        if (this.originalContact.group && this.originalContact.group.length > 0) {
-          this.groupContacts = JSON.parse(JSON.stringify(this.originalContact.group));
-        }
+        this.conatctService.getContact(this.id.toString())
+          .subscribe(contactData => {
+            this.originalContact = contactData.contact;
+            
+            if (this.originalContact == null || !this.originalContact) {
+              return;
+            }
+    
+            this.editMode = true;
+            this.contact = JSON.parse(JSON.stringify(this.originalContact));
+    
+            if (this.originalContact.group && this.originalContact.group.length > 0) {
+              this.groupContacts = JSON.parse(JSON.stringify(this.originalContact.group));
+            }
+          });
+          
       }
 
     )

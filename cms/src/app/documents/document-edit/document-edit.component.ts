@@ -32,27 +32,33 @@ export class DocumentEditComponent implements OnInit {
         }
 
         // commented out until I can figure out what is happening with the id
-        this.originalDocument = this.documentService.getDocument(this.id.toString());
-        console.log(this.originalDocument);
+        this.documentService.getDocument(this.id.toString())
+          .subscribe(documentData => {
+            this.originalDocument = documentData.document;
+            console.log(this.originalDocument);
+            
+            if (this.originalDocument == null || !this.originalDocument) {
+              return
+            }
+            
+            console.log('Edit True');
+            this.editMode = true;
+            this.document = JSON.parse(JSON.stringify(this.originalDocument));
+          });
 
-        if (this.originalDocument == null || !this.originalDocument) {
-          return
-        }
-        
-        console.log('Edit True');
-        this.editMode = true;
-        this.document = JSON.parse(JSON.stringify(this.originalDocument));
       })
   }
 
   onSubmit(form: NgForm) {
     const value = form.value
     const newDocument = new Document('', value.name, value.description, value.url, null);
-    console.log(value);
+    console.log(newDocument);
     if (this.editMode) {
       this.documentService.updateDocument(this.originalDocument, newDocument);
+      console.log('Edit True Documents');
     } else {
       this.documentService.addDocument(newDocument);
+      console.log('Edit False Documents');
     }
     this.router.navigate(['/documents']);
   }

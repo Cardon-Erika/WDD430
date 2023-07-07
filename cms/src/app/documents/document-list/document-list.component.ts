@@ -16,7 +16,7 @@ export class DocumentListComponent implements OnInit{
   constructor(private documentService: DocumentService) {}
 
   ngOnInit() {
-    this.documents = this.documentService.getDocuments();
+    // this.documents = this.documentService.getDocuments();
 
     // this.documentService.documentChangedEvent
     //   .subscribe(
@@ -28,9 +28,12 @@ export class DocumentListComponent implements OnInit{
     this.subscription = this.documentService.documentListChangedEvent
         .subscribe(
           (documentList: Document[]) => {
+            console.log(documentList);
             this.documents = documentList;
           }
-        )
+        );
+
+        this.documentService.getDocuments();
   }
 
   ngOnDestroy() {
