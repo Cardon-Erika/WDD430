@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+      <!-- <div class="row">
+        <h4 class="card-title">{{book?.title}}</h4>
+        <span class="badge bg-danger">Required</span>
+      </div> -->
+      <div class="row py-2 align-items-end">
+        <div class="col mb-0">
+          <h4 class="card-title col mb-0">{{ book?.title }}</h4>
+          <!-- <span class="badge bg-danger col-auto px-4 mx-1">Required</span> -->
+          <p class="card-text fw-bold">{{ book?.author.name }}</p>
+        </div>
+        <img *ngIf="book?.required" id="required" class="col-auto px-0 mx-0" src="../../../assets/images/required_tilt.png">
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <p class="card-text">{{ book?.description }}</p>
+        </div>
+        <div class="col-4">
+          <img class="img-fluid" src="{{ book?.imageUrl }}" alt="{{ book?.title }}">
+        </div>
+      </div>
+      <div class="row pt-4">
+        <a class="btn btn-info col mx-1" [routerLink]="['edit']">Edit</a>
+        <a class="btn btn-danger col mx-1" (click)="onDelete()">Delete</a>
+      </div>
+    </div>
+</div>

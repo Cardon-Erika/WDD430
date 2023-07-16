@@ -1,0 +1,37 @@
+<!-- <a class="list-group-item clearfix bookDiv d-flex align-items-center justify-content-center px-3" [routerLink]="[log?.id]" routerLinkActive="active">
+    <p class="fw-bold mb-1">{{ log?.user.name }}</p>
+</a> -->
+<div class="clearfix">
+    <ng-container *ngFor="let log of logs" >
+
+    <h4 class="mb-0 pt-3">{{user?.name}}</h4>
+    <p class="fw-bold mb-0 text-end">Required {{ requiredCount }}</p>
+    <!-- <div *ngIf="logs?.book.required == true"> -->
+        <a class="list-group-item clearfix logDiv" [routerLink]="[log?.id]" routerLinkActive="active" *ngFor="let log of logs">
+            <p class="fw-bold mb-0">{{ log?.book.title }}</p>
+            <p>{{ logs?.thoughts }}</p>
+            <hr>
+        </a>
+    <!-- </div> -->
+    <hr>
+    <p class="fw-bold mb-0 text-end">Additional {{ additionalCount }}</p>
+    <!-- <ng-container *ngIf="logs?.book.required == false"> -->
+        <a class="list-group-item clearfix logDiv" [routerLink]="[log?.id]" routerLinkActive="active" *ngFor="let log of logs">
+            <p class="fw-bold mb-0">{{ log?.book.title }}</p>
+            <p>{{ log?.thoughts }}</p>
+            <hr>
+        </a>
+    <!-- </ng-container> -->
+    <hr>
+    <!-- <a class="list-group-item clearfix bookDiv d-flex align-items-center justify-content-center px-3 mt-2" [routerLink]="[log?.id]" routerLinkActive="active" *ngFor="let log of logs"> -->
+        <!-- <ng-container *ngFor="let log of logs" > -->
+            <a class="list-group-item clearfix logDiv" [routerLink]="[log?.id]" routerLinkActive="active" *ngIf="log?.user.name == user?.name">
+                <p class="fw-bold mb-0">{{ log?.book.title }}</p>
+                <p>{{ log?.thoughts }}</p>
+                <hr>
+                <!-- <p class="fw-bold mb-0" *ngIf="log?.user.name == user?.name">{{ log?.book.title }}</p>
+                <p *ngIf="log?.user.name == user?.name">{{ log?.thoughts }}</p>
+                <hr *ngIf="log?.user.name == user?.name"> -->
+            </a>
+        </ng-container>
+</div>

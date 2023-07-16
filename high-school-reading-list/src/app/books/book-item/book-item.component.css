@@ -1,0 +1,20 @@
+.bookDiv {
+    width: 12rem;
+    height: 9rem;
+    margin: 2px;
+    /* font-size: 1.3rem; */
+    border: solid thin lightgray;
+    float: left;
+    padding: .25rem;
+    border-radius: 0.375rem;
+    line-height: 1.2;
+  }
+
+  #required {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    max-width: 50%;
+    /* transform: rotate(15deg); */
+}
+  

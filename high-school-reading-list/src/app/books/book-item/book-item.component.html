@@ -1,0 +1,10 @@
+<a class="list-group-item clearfix bookDiv d-flex align-items-center justify-content-center px-3" [routerLink]="[book?.id]" routerLinkActive="active">
+  <img *ngIf="book?.required" id="required" class="col-auto px-0 mx-0" src="../../../assets/images/required_tilt.png">
+  <div>
+    <!-- <h5>{{ book?.title }}</h5>
+    <h6>by: {{ book?.author.name }}</h6> -->
+    <p class="fw-bold mb-1">{{ book?.title }}</p>
+    <p>by: {{ bookAuthor }}</p>
+  </div>
+  </a>
+  

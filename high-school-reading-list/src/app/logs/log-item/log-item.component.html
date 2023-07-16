@@ -1,0 +1,29 @@
+<!-- <a class="list-group-item clearfix bookDiv d-flex align-items-center justify-content-center px-3" [routerLink]="[log?.id]" routerLinkActive="active">
+    <p class="fw-bold mb-1">{{ log?.user.name }}</p>
+</a> -->
+<div class="clearfix">
+
+    <h4 class="mb-0 pt-3">{{user?.name}}</h4>
+    <p class="fw-bold text-end bg-secondary text-white px-3 py-2">Required {{ requiredCount }}</p>
+    <ng-container *ngFor="let log of logByUser">
+        <ng-container *ngIf="log?.book.required == true">
+            <a class="list-group-item clearfix logDiv" [routerLink]="[log?.id]" routerLinkActive="active">
+                <p class="fw-bold mb-0">{{ log?.book.title }}</p>
+                <p>{{ log?.thoughts }}</p>
+                <hr>
+            </a>
+        </ng-container>
+    </ng-container>
+    <!-- <hr> -->
+    <p class="fw-bold text-end bg-secondary text-white px-3 py-2">Additional {{ additionalCount }}</p>
+    <ng-container *ngFor="let log of logByUser">
+        <ng-container *ngIf="log?.book.required == false">
+            <a class="list-group-item clearfix logDiv" [routerLink]="[log?.id]" routerLinkActive="active">
+                <p class="fw-bold mb-0">{{ log?.book.title }}</p>
+                <p>{{ log?.thoughts }}</p>
+                <hr>
+            </a>
+        </ng-container>
+    </ng-container>
+    <!-- <hr> -->
+</div>

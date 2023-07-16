@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header">
+      <div class="row py-2 align-items-end">
+        <h2 class="col mb-0">Authors</h2>
+        <a [routerLink]="['new']" class="btn btn-success col-auto px-4 mx-1">Add Author</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="text-center">
+        <app-author-item
+          *ngFor="let author of authors"
+          [author]="author"></app-author-item>
+      </div>
+    </div>
+  
+  </div>

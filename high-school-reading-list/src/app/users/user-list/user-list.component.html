@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header">
+      <div class="row py-2 align-items-end">
+        <h2 class="col mb-0">Users</h2>
+        <!-- <a class="btn btn-warning col-auto px-4 mx-1" routerLink="/authors">Manage Authors</a> -->
+        <a [routerLink]="['new']" class="btn btn-success col-auto px-4 mx-1">Add User</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="text-center">
+        <app-user-item
+          *ngFor="let user of users"
+          [user]="user"></app-user-item>
+      </div>
+    </div>
+  
+  </div>

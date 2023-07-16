@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+      <div class="row py-2 align-items-end">
+        <h2 class="col mb-0">Reading Log</h2>
+        <a class="btn btn-warning col-auto px-4 mx-1" routerLink="/users">Manage Users</a>
+        <a [routerLink]="['new']" class="btn btn-success col-auto px-4 mx-1">Log a Book</a>
+      </div>
+    </div>
+    <div class="card-body">
+        <!-- <div> -->
+            <!-- <h4 *ngFor="let user of users">{{ user.name }}</h4> -->
+            <!-- <div class="text-center">
+              <app-log-item
+                *ngFor="let log of logs"
+                [log]="log"></app-log-item>
+            </div> -->
+
+            <!-- <div> -->
+                <app-log-item
+                  *ngFor="let user of users"
+                  [user]="user"></app-log-item>
+              <!-- </div> -->
+        <!-- </div> -->
+    </div>
+  
+  </div>
